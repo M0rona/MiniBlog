@@ -2,21 +2,52 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   text-align: center;
-  color: #fff;
   cursor: pointer;
-  max-width: 120px;
   font-weight: bold;
-  border: none;
-  padding: 10px 15px;
   font-size: 1em;
-
-  background-color: ${({ variant }) =>
-    variant === 'green'
-      ? '#1a8918'
-      : variant === 'dark'
-        ? '#000'
-        : variant && 'red'
+  margin: 20px 0px;
+  
+  padding: ${({ variant }) =>
+    variant === 'outline' ? '7px 30px' : '10px 15px'
   };
 
+  color: ${({ variant }) =>
+    variant === 'outline' ? '#000' : '#fff'
+  };
+  
+  border: ${({ variant }) =>
+    variant === 'outline' ? '1px solid #000' : 'none'
+  };
+
+  background-color: ${({ variant }) =>
+    variant === 'green' ? '#1a8918'
+      : variant === 'dark' ? '#000' : 'transparent'
+  };
+
+  border-radius: ${({ variant }) =>
+    variant === 'green' ? '10px' : '0'
+  };
+
+  /* Hover */
+  &:hover {
+    background-color: ${({ variant }) =>
+    variant === 'green' ? '#0F730C'
+      : variant === 'outline' ? '#000'
+        : variant === 'danger' ? '#DC3545' : 'none'
+  };
+
+    ${({ variant }) =>
+    variant === 'outline' ? 'color: #fff' : ''
+  }
+
+
+  }
+
+  &[disabled] {
+    background-color: #aaa;
+    border: none;
+    padding: 10px 15px;
+    color: #000;
+  }
 
 `

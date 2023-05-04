@@ -20,6 +20,10 @@ export const Navbar = () => {
         </li>
 
         <li>
+          <NavLink to="/login/registrar">Registrar</NavLink>
+        </li>
+
+        <li>
           <NavLink to="/about">About</NavLink>
         </li>
       </ul>

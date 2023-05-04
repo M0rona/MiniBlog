@@ -14,6 +14,11 @@ export default createGlobalStyle`
         background-color: #F6FCFF;
     }
 
+    main {
+        min-height: 65%;
+        padding: 3em;
+    }
+
     input::placeholder,
     textarea::placeholder {
         font-family: 'Inter', sans-serif;
@@ -58,5 +63,14 @@ export default createGlobalStyle`
         border-bottom: 1px solid #CCC;
         padding: .8em 1em;
         background-color: transparent;
+    }
+
+    .error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
     }
 `

@@ -11,12 +11,15 @@ export const Routers = ({ children }) => {
     <BrowserRouter>
       {children}
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/registrar" element={<Register />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/registrar" element={<Register />} />
+        </Routes>
+      </main>
+     
     </BrowserRouter>
   );
 };
