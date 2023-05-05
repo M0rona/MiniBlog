@@ -40,9 +40,6 @@ export const Register = () => {
     };
 
     const res = await createUser(user)
-
-    console.log(res);
-
   };
 
   useEffect(() => {
@@ -134,10 +131,14 @@ export const Register = () => {
           />
         </label>
 
-        { !loading && <Button type="submit" variant="green">Cadastrar</Button> }
-        { loading && <Button type="submit" variant="green" disabled>Aguarde...</Button> }
-
         {dataForms.error && <p className="error">{dataForms.error}</p> }
+
+        <div>
+
+          { !loading && <Button type="submit" variant="green">Cadastrar</Button> }
+          { loading && <Button type="submit" variant="green" disabled>Aguarde...</Button> }
+
+        </div>
       </form>
     </Container>
   );

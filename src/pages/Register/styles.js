@@ -10,4 +10,13 @@ export const Container = styled.div`
     text-align: center;
     margin: 1em 0;
   }
+
+  div {
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 50%;
+    }
+  }
 `;
