@@ -9,8 +9,9 @@ import { Container } from "./styles";
 export const Login = () => {
 
   const [dataForms, setDataForms] = useState({
-    email: "",
-    password: "",
+    email: localStorage.getItem("email") ? localStorage.getItem("email") : "",
+    password: localStorage.getItem("senha") ? localStorage.getItem("senha") : "",
+    remember: false,
     error: "",
   });
 
@@ -31,7 +32,10 @@ export const Login = () => {
 
     const res = await login(user)
 
-    console.log(res);
+    if(dataForms.remember) {
+      localStorage.setItem("email", dataForms.email);
+      localStorage.setItem("senha", dataForms.password);
+    }
   };
 
   useEffect(() => {
@@ -88,9 +92,25 @@ export const Login = () => {
           />
         </label>
 
+        <div className="check">
+          <input 
+            type="checkbox" 
+            name="lembrar" 
+            id="lembrar"
+            onClick={(e) => 
+              setDataForms({
+                ...dataForms,
+                remember: !dataForms.remember
+              })
+            } 
+          />
+          <span>Lembrar-me</span>
+        </div>
+        
+
         {dataForms.error && <p className="error">{dataForms.error}</p> }
 
-        <div>
+        <div className="buttons">
 
           { !loading && <Button type="submit" variant="green">Entrar</Button> }
           { loading && <Button type="submit" variant="green" disabled>Aguarde...</Button> }

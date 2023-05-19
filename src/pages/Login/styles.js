@@ -17,12 +17,24 @@ export const Container = styled.div`
 
   }
 
-  div {
+  .buttons {
     display: flex;
     justify-content: center;
 
     button {
       width: 50%;
+    }
+  }
+
+  .check {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 1em;
+
+    input {
+      width: 18px;
+      background-color: #2556e8;
     }
   }
 `;

@@ -15,11 +15,11 @@ export const Button = styled.button`
   };
 
   color: ${({ variant }) =>
-    variant === 'outline' ? '#000' : '#fff'
+    variant === 'outline' || variant === 'danger-outline' ? '#000' : '#fff'
   };
   
   border: ${({ variant }) =>
-    variant === 'outline' ? '1px solid #000' : 'none'
+    variant === 'outline' || variant === 'danger-outline' ? '1px solid #000' : 'none'
   };
 
   background-color: ${({ variant }) =>
@@ -36,11 +36,11 @@ export const Button = styled.button`
     background-color: ${({ variant }) =>
     variant === 'green' ? '#0F730C'
       : variant === 'outline' ? '#000'
-        : variant === 'danger' ? '#DC3545' : 'none'
+        : variant === 'danger' || variant === "danger-outline" ? '#DC3545' : 'none'
   };
 
     ${({ variant }) =>
-    variant === 'outline' ? 'color: #fff' : ''
+    variant === 'outline' || variant === 'danger-outline' ? 'color: #fff' : ''
   }
 
 

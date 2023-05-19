@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthValue } from '../../contexts/AuthContext'
 import { useInsertDocument } from '../../hooks/useInsertDocument'
+import { useFetchDocument } from '../../hooks/useFetchDocument'
 
 import { Button } from '../../styles/Buttons'
 import { Container } from './styles'
 
-export const CreatePost = () => {
+export const EditPost = () => {
+
+  const {id} = useParams();
+  const { document: postEdit } = useFetchDocument("posts", id);
 
   const [post, setPost] = useState({
     title: "",
@@ -16,6 +20,22 @@ export const CreatePost = () => {
     tags: "",
     formError: ""
   })
+
+  useEffect(() => {
+
+    if(postEdit) {
+      const textTags = postEdit.tags.join(", ")
+
+      setPost({
+        ...post,
+        title: postEdit.title,
+        body: postEdit.body,
+        image: postEdit.image,
+        tags: textTags
+      })
+    }
+
+  }, [postEdit])
 
   const user = useAuthValue()
   const navigate = useNavigate()
@@ -64,8 +84,8 @@ export const CreatePost = () => {
 
   return (
     <Container>
-      <h2>Criar Post</h2>
-      <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
+      <h2>Editando post: {post.title}</h2>
+      <p>Altere os dados do post como desejar</p>
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -97,6 +117,10 @@ export const CreatePost = () => {
             value={post.image} 
           />
         </label>
+
+        <p>Preview da imagem atual:</p>
+
+        <img src={post.image} alt={post.title} />
 
         <label>
           <span>Conteúdo:</span>
@@ -133,7 +157,7 @@ export const CreatePost = () => {
 
         <div>
 
-          { !response.loading && <Button type="submit" variant="green">Criar</Button> }
+          { !response.loading && <Button type="submit" variant="green">Salvar</Button> }
           { response.loading && <Button type="submit" variant="green" disabled>Aguarde...</Button> }
 
         </div>
